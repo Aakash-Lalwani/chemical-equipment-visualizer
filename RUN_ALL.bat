@@ -11,7 +11,7 @@ echo.
 
 REM Start Backend in new window
 echo [1/3] Starting Django Backend...
-start "BACKEND - Django Server" cmd /k "cd /d c:\Users\91985\Desktop\FOSSE_2026\backend && c:\Users\91985\Desktop\FOSSE_2026\.venv\Scripts\python.exe manage.py runserver"
+start "BACKEND - Django Server" cmd /k "cd /d c:\Users\91985\Desktop\FOSSE_2026\backend && .venv\Scripts\python.exe manage.py runserver"
 timeout /t 3 /nobreak >nul
 
 REM Start Frontend in new window (if Node.js is installed)
@@ -27,7 +27,7 @@ timeout /t 2 /nobreak >nul
 
 REM Start Desktop App in new window
 echo [3/3] Starting Desktop Application...
-start "DESKTOP - PyQt5 App" cmd /k "cd /d c:\Users\91985\Desktop\FOSSE_2026\desktop-pyqt && c:\Users\91985\Desktop\FOSSE_2026\.venv\Scripts\python.exe main.py"
+start "DESKTOP - PyQt5 App" cmd /k "cd /d c:\Users\91985\Desktop\FOSSE_2026\desktop-pyqt && cd .. && backend\.venv\Scripts\python.exe desktop-pyqt\main.py"
 timeout /t 2 /nobreak >nul
 
 echo.
