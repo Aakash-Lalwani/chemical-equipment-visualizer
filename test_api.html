@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 { color: #2c3e50; }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover { background: #2980b9; }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Backend API Test</h1>
+        <p><strong>Backend URL:</strong> http://127.0.0.1:8000</p>
+        
+        <h2>Test Login Endpoint</h2>
+        <input type="text" id="username" placeholder="Username" value="admin">
+        <input type="password" id="password" placeholder="Password" value="admin123">
+        <button onclick="testLogin()">🔐 Test Login</button>
+        
+        <div id="result"></div>
+        
+        <hr style="margin: 30px 0;">
+        
+        <h2>Quick Links</h2>
+        <ul>
+            <li><a href="http://127.0.0.1:8000/admin/" target="_blank">Django Admin Panel</a></li>
+            <li><a href="http://127.0.0.1:8000/api/" target="_blank">API Root (may show error - that's ok)</a></li>
+        </ul>
+        
+        <h2>Backend Status Check</h2>
+        <button onclick="checkServer()">🔍 Check if Server is Running</button>
+    </div>
+
+    <script>
+        async function testLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const resultDiv = document.getElementById('result');
+            
+            resultDiv.className = 'info';
+            resultDiv.textContent = '⏳ Testing login endpoint...\nPOST http://127.0.0.1:8000/api/login/';
+            
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/login/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.className = 'success';
+                    resultDiv.textContent = 
+                        '✅ SUCCESS! Login worked!\n\n' +
+                        'Status: ' + response.status + '\n' +
+                        'Token: ' + data.token.substring(0, 30) + '...\n' +
+                        'User: ' + data.user.username + '\n' +
+                        'Email: ' + data.user.email + '\n\n' +
+                        'Full Response:\n' + JSON.stringify(data, null, 2);
+                } else {
+                    resultDiv.className = 'error';
+                    resultDiv.textContent = 
+                        '❌ Login Failed!\n\n' +
+                        'Status: ' + response.status + '\n' +
+                        'Error: ' + JSON.stringify(data, null, 2);
+                }
+            } catch (error) {
+                resultDiv.className = 'error';
+                resultDiv.textContent = 
+                    '❌ CONNECTION ERROR!\n\n' +
+                    'Error: ' + error.message + '\n\n' +
+                    '🔧 Troubleshooting:\n' +
+                    '1. Is Django server running?\n' +
+                    '2. Check terminal for: "Starting development server at http://127.0.0.1:8000/"\n' +
+                    '3. Run: START_BACKEND.bat\n' +
+                    '4. Or manually: cd backend && python manage.py runserver';
+            }
+        }
+        
+        async function checkServer() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.className = 'info';
+            resultDiv.textContent = '🔍 Checking server status...';
+            
+            try {
+                const response = await fetch('http://127.0.0.1:8000/admin/', {
+                    method: 'GET',
+                });
+                
+                resultDiv.className = 'success';
+                resultDiv.textContent = 
+                    '✅ Backend Server is RUNNING!\n\n' +
+                    'Status: ' + response.status + '\n' +
+                    'URL: http://127.0.0.1:8000/\n\n' +
+                    'The Django admin page loaded, which means the server is working.';
+            } catch (error) {
+                resultDiv.className = 'error';
+                resultDiv.textContent = 
+                    '❌ Backend Server is NOT RUNNING!\n\n' +
+                    'Error: ' + error.message + '\n\n' +
+                    '🔧 Start the server:\n' +
+                    '1. Double-click: START_BACKEND.bat\n' +
+                    '2. Or open terminal:\n' +
+                    '   cd c:\\Users\\91985\\Desktop\\FOSSE_2026\\backend\n' +
+                    '   python manage.py runserver';
+            }
+        }
+    </script>
+</body>
+</html>

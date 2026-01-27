@@ -1,0 +1,199 @@
+/*
+  APP-SPECIFIC STYLES - Chemical Equipment Visualizer
+  Complements global.css with app-specific layout
+  
+  WHY THESE STYLES:
+  - Creates professional header/nav structure
+  - Clean card-based layouts
+  - Consistent spacing using 8px grid
+  - Responsive for mobile/tablet
+*/
+
+/* Import global design system */
+@import './styles/global.css';
+
+/* ============================================
+   APP CONTAINER
+   ============================================ */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.app-header {
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.app-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.logo-icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.logo-text {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: var(--color-bg);
+  border-radius: var(--radius-md);
+}
+
+.user-icon {
+  font-size: 20px;
+}
+
+.user-name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+/* ============================================
+   NAVIGATION TABS
+   ============================================ */
+.app-nav {
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.nav-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: none;
+  background: none;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.nav-tab:hover {
+  color: var(--color-primary);
+  background-color: rgba(37, 99, 235, 0.05);
+}
+
+.nav-tab.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.nav-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+.app-main {
+  flex: 1;
+  padding: var(--spacing-xl) 0;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.app-footer {
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  padding: var(--spacing-lg) 0;
+  margin-top: var(--spacing-xl);
+}
+
+.footer-text {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - Mobile/Tablet
+   ============================================ */
+@media (max-width: 768px) {
+  /* Hide long text on mobile */
+  .logo-text {
+    display: none;
+  }
+  
+  .logo-icon {
+    font-size: 28px;
+  }
+  
+  .user-name {
+    display: none;
+  }
+  
+  /* Icon-only navigation on mobile */
+  .nav-tab span:not(.nav-icon) {
+    display: none;
+  }
+  
+  .nav-container {
+    justify-content: space-around;
+  }
+  
+  .nav-tab {
+    padding: var(--spacing-md);
+  }
+  
+  .header-content {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}
