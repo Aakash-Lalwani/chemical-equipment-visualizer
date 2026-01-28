@@ -13,7 +13,7 @@
 
 import { useState, useEffect } from 'react';
 import './styles/global.css';
-import './App.css';
+import './App-new.css';
 import Login from './components/Login';
 import CSVUpload from './components/CSVUpload';
 import Dashboard from './components/Dashboard';
@@ -195,10 +195,6 @@ function App() {
           </p>
         </div>
       </footer>
-    </div>
-  );
-}
-      </div>
     </div>
   );
 }
