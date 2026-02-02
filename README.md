@@ -89,6 +89,28 @@ This project provides a complete solution for managing and analyzing chemical eq
 - Node.js 16+ (optional, for web frontend)
 - Git
 
+---
+
+## 🚀 Quick Start (5 Minutes)
+
+**For impatient developers:** Use this one-command launcher (Windows):
+
+```powershell
+cd c:\Users\91985\Desktop\FOSSE_2026
+.\RUN_ALL.bat
+```
+
+This script automatically starts:
+- Django backend on `http://127.0.0.1:8000`
+- React frontend on `http://localhost:3000` (if Node.js installed)
+- PyQt5 desktop application
+
+**Default credentials:** `admin` / `admin123`
+
+---
+
+## 📋 Detailed Setup Instructions
+
 ### Backend Setup
 
 1. Clone the repository:
@@ -98,9 +120,9 @@ cd chemical-equipment-visualizer
 ```
 
 2. Create and activate virtual environment:
-```bash
+```powershell
 # Windows
-cd backend
+cd c:\Users\91985\Desktop\FOSSE_2026\backend
 python -m venv .venv
 .venv\Scripts\activate
 
@@ -110,27 +132,43 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-3. Install dependencies:
+3. Copy environment configuration:
+```powershell
+# Windows
+copy .env.example .env
+# Edit .env file with your actual configuration
+
+# Linux/Mac
+cp .env.example .env
+# Edit .env file with your actual configuration
+```
+
+4. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Run database migrations:
+5. Run database migrations:
 ```bash
 python manage.py migrate
 ```
 
-5. Create admin user:
+6. Create admin user (credentials for demo):
 ```bash
 python manage.py createsuperuser
+# Username: admin
+# Password: admin123
+# Email: (press Enter to skip)
 ```
 
-6. Start the development server:
+7. Start the development server:
 ```bash
 python manage.py runserver
 ```
 
 The backend API will be available at `http://127.0.0.1:8000/`
+
+**Test it:** Navigate to `http://127.0.0.1:8000/admin` and login with your credentials.
 
 ### Web Frontend Setup (Optional)
 
@@ -139,65 +177,179 @@ The backend API will be available at `http://127.0.0.1:8000/`
 cd frontend-react
 ```
 
-2. Install dependencies:
+2. Copy environment configuration:
+```powershell
+# Windows
+copy .env.example .env
+
+# Linux/Mac
+cp .env.example .env
+```
+
+3. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Start development server:
+4. Start development server:
 ```bash
 npm run dev
 ```
 
-The web interface will be available at `http://localhost:5173/`
+The web interface will be available at `http://localhost:3000/` (or `http://localhost:5173/` depending on Vite version)
+
+**Test it:** Open the URL in your browser and you should see the login page.
 
 ### Desktop Application Setup
 
-1. Ensure backend is running
+1. Ensure backend is running first
 
-2. Install PyQt5 dependencies:
-```bash
-pip install -r desktop-pyqt/requirements.txt
+2. Copy configuration file:
+```powershell
+# Windows
+cd desktop-pyqt
+copy config.example.py config.py
+# Edit config.py if needed to change backend URL
 ```
 
 3. Run the application:
-```bash
+```powershell
+# Windows (from project root)
+cd c:\Users\91985\Desktop\FOSSE_2026
+backend\.venv\Scripts\python.exe desktop-pyqt\main.py
+
+# Linux/Mac
 python desktop-pyqt/main.py
 ```
+
+**Note:** Desktop app uses the same backend Python environment for simplicity.
+
+---
+
+## 🎬 Demo Checklist (2-3 Minute Video)
+
+Follow this exact sequence for your demo video:
+
+### **Pre-Recording Setup** (5 minutes before recording)
+- [ ] Run validation script: `.\scripts\validate_project.ps1`
+- [ ] Start all services: `.\RUN_ALL.bat` (or manually)
+- [ ] Verify backend: http://127.0.0.1:8000/admin
+- [ ] Verify frontend: http://localhost:3000
+- [ ] Have `sample_equipment_data.csv` ready
+- [ ] Close unnecessary applications
+- [ ] Clear browser cookies for clean login
+
+### **Demo Timeline** (Total: 2:30-3:00 minutes)
+
+#### [0:00-0:20] **Introduction** (20 sec)
+- [ ] Show VS Code with project structure
+- [ ] Mention tech stack: "Django + React + PyQt5"
+- [ ] State purpose: "Full-stack equipment data analyzer"
+
+#### [0:20-1:30] **Web Application** (70 sec)
+- [ ] Open http://localhost:3000
+- [ ] Login: `admin` / `admin123`
+- [ ] Navigate to Upload tab
+- [ ] Drag-drop `sample_equipment_data.csv`
+- [ ] Show success message
+- [ ] Navigate to Dashboard tab
+- [ ] Point out metrics:
+  - **Total Equipment: 10**
+  - **Avg Flowrate: ~195.23**
+  - **Avg Pressure: ~2.46**
+  - **Avg Temperature: ~83.33**
+- [ ] Show bar chart (equipment type distribution)
+- [ ] Show pie chart
+
+#### [1:30-2:00] **History & PDF** (30 sec)
+- [ ] Navigate to History tab
+- [ ] Show list of uploads (should have 1-5)
+- [ ] Click "Download PDF" button
+- [ ] Open PDF showing summary + charts
+
+#### [2:00-2:40] **Desktop Application** (40 sec)
+- [ ] Launch PyQt5 desktop app
+- [ ] Login with same credentials
+- [ ] Show History tab
+- [ ] View dataset details
+- [ ] Show Matplotlib charts
+
+#### [2:40-3:00] **Wrap-up** (20 sec)
+- [ ] Back to VS Code
+- [ ] Mention: "Token auth, CSV validation, PDF reports"
+- [ ] State: "WCAG 2.1 AA accessible"
+- [ ] End: "Ready for deployment"
+
+### **After Recording**
+- [ ] Trim video to 2:30-3:00 minutes
+- [ ] Add title card (optional)
+- [ ] Check audio clarity
+- [ ] Export as 1080p MP4
+
+**For detailed demo instructions, see:** [DEMO_INSTRUCTIONS.md](DEMO_INSTRUCTIONS.md)
+
+---
 
 ## Usage
 
 ### Getting Started
 
 1. Start the backend server (see Installation section)
-2. Access the web interface at `http://localhost:5173/` or launch the desktop application
-3. Log in with your credentials
+2. Access the web interface at `http://localhost:3000/` or launch the desktop application
+3. Log in with your credentials (default: `admin` / `admin123`)
 4. Upload a CSV file containing equipment data
 5. View automatically generated visualizations and statistics
 6. Access historical datasets through the History tab
 7. Download PDF reports as needed
+
+### Sample Data
+
+A sample CSV file (`sample_equipment_data.csv`) is included in the project root for testing:
+
+```csv
+Equipment Name,Type,Flowrate,Pressure,Temperature
+Reactor A,Reactor,150.5,2.3,120.0
+Heat Exchanger B,Heat Exchanger,200.0,1.8,85.5
+Pump C,Pump,175.3,3.5,40.2
+...
+```
+
+**Expected Results:**
+- Total Equipment: 10
+- Average Flowrate: 195.23
+- Average Pressure: 2.46
+- Average Temperature: 83.33
+- Equipment Types: Reactor (2), Heat Exchanger (2), Pump (2), Column (1), Compressor (1), Mixer (1), Separator (1)
 
 ### CSV File Format
 
 The application expects CSV files with the following structure:
 
 ```csv
-Equipment_ID,Equipment_Type,Flowrate,Pressure,Temperature
-EQ001,Pump,3.2,12.5,25.0
-EQ002,Valve,2.8,10.0,22.5
-EQ003,Heat_Exchanger,4.1,15.2,30.0
+Equipment Name,Type,Flowrate,Pressure,Temperature
+Reactor A,Reactor,150.5,2.3,120.0
+Pump B,Pump,200.0,1.8,85.5
+Heat Exchanger C,Heat Exchanger,175.3,3.5,40.2
 ```
 
 **Required Columns:**
-- Equipment_ID: Unique identifier for each equipment
-- Equipment_Type: Category or type of equipment
-- Flowrate: Numerical flow rate value
-- Pressure: Numerical pressure value
-- Temperature: Numerical temperature value
+- **Equipment Name** (or equipment name, EQUIPMENT NAME): Equipment identifier
+- **Type** (or type, TYPE): Category/type of equipment  
+- **Flowrate** (or flowrate, FLOWRATE): Numerical flow rate value
+- **Pressure** (or pressure, PRESSURE): Numerical pressure value
+- **Temperature** (or temperature, TEMPERATURE): Numerical temperature value
+
+**Note:** Column names are **case-insensitive**. The system accepts uppercase, lowercase, or mixed case.
 
 **File Requirements:**
-- File extension: .csv
+- File extension: `.csv`
 - Maximum file size: 10MB
+- Encoding: UTF-8 (recommended)
+
+**Data Validation:**
+- Numeric columns are automatically coerced to numbers
+- Rows with invalid/missing data are dropped (warning shown with count)
+- At least one valid data row required
 - First row must contain column headers
 - All columns are required
 
@@ -419,6 +571,229 @@ npm test
 - Ensure ReportLab is installed
 - Check file system permissions
 - Verify matplotlib is working correctly
+
+---
+
+## 🧪 Testing & Validation
+
+### Run Automated Validation
+
+```powershell
+# Windows
+.\scripts\validate_project.ps1
+
+# This checks:
+# - Required files exist
+# - CSV format is valid
+# - Backend dependencies installed
+# - Django checks pass
+# - Tests pass
+# - Frontend builds successfully
+```
+
+### Run Django Tests
+
+```bash
+cd backend
+.venv\Scripts\activate  # Windows
+python manage.py test
+
+# Expected output:
+# Creating test database...
+# ......................
+# Ran 12 tests in X.XXs
+# OK
+```
+
+### Manual Testing Checklist
+
+- [ ] Backend admin panel loads: http://127.0.0.1:8000/admin
+- [ ] Frontend loads: http://localhost:3000
+- [ ] Can login with admin/admin123
+- [ ] Can upload sample_equipment_data.csv
+- [ ] Dashboard shows correct statistics (Total: 10, Avg Flowrate: ~195.23)
+- [ ] Bar chart displays 7 equipment types
+- [ ] History shows uploaded dataset
+- [ ] PDF downloads successfully
+- [ ] Desktop app launches and shows same data
+
+---
+
+## 🚀 Deployment
+
+### Backend Deployment (Railway/Heroku)
+
+1. **Configure environment variables:**
+```env
+SECRET_KEY=<generate-new-secret-key>
+DEBUG=False
+ALLOWED_HOSTS=your-domain.railway.app
+CORS_ALLOWED_ORIGINS=https://your-frontend.vercel.app
+```
+
+2. **Railway deployment:**
+```bash
+# Railway auto-detects Python and uses Procfile
+# Ensure these files exist:
+# - Procfile
+# - runtime.txt (Python version)
+# - railway.json (optional config)
+```
+
+3. **Run migrations after deployment:**
+```bash
+railway run python manage.py migrate
+railway run python manage.py createsuperuser
+```
+
+### Frontend Deployment (Vercel/Netlify)
+
+1. **Update environment variable:**
+```env
+VITE_API_URL=https://your-backend.railway.app/api
+```
+
+2. **Vercel deployment:**
+```bash
+npm run build
+vercel --prod
+```
+
+3. **Add build settings in Vercel dashboard:**
+- Build Command: `npm run build`
+- Output Directory: `dist`
+- Install Command: `npm install`
+
+---
+
+## 📁 Project Structure
+
+```
+FOSSE_2026/
+├── backend/                 # Django REST API
+│   ├── config/             # Django settings
+│   ├── equipment/          # Main app (models, views, utils)
+│   ├── media/              # Uploaded CSV files
+│   ├── .env.example        # Environment template
+│   └── requirements.txt    # Python dependencies
+├── frontend-react/         # React web application
+│   ├── src/
+│   │   ├── components/     # React components
+│   │   ├── services/       # API client
+│   │   └── config.js       # Configuration
+│   ├── .env.example        # Environment template
+│   └── package.json        # Node dependencies
+├── desktop-pyqt/           # PyQt5 desktop application
+│   ├── main.py             # Entry point
+│   ├── config.example.py   # Configuration template
+│   └── requirements.txt    # Python dependencies
+├── .github/
+│   └── workflows/
+│       └── ci.yml          # GitHub Actions CI/CD
+├── scripts/
+│   └── validate_project.ps1  # Validation script
+├── sample_equipment_data.csv  # Sample data for demo
+├── DEMO_INSTRUCTIONS.md    # Video demo guide
+├── README.md               # This file
+└── RUN_ALL.bat             # Quick launcher (Windows)
+```
+
+---
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+**Backend won't start:**
+```powershell
+# Check Python version (needs 3.10+)
+python --version
+
+# Recreate virtual environment
+cd backend
+rmdir /s .venv
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+
+# Run checks
+python manage.py check
+```
+
+**ModuleNotFoundError:**
+```bash
+# Make sure venv is activated (prompt should show (.venv))
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+**Database errors:**
+```bash
+# Delete and recreate database
+cd backend
+del db.sqlite3
+python manage.py migrate
+python manage.py createsuperuser
+```
+
+**CORS errors in browser console:**
+```python
+# backend/config/settings.py should have:
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://localhost:5173',
+]
+# Restart backend after changes
+```
+
+**Frontend "Cannot find module" errors:**
+```bash
+cd frontend-react
+rm -rf node_modules package-lock.json
+npm install
+npm run dev
+```
+
+**Desktop app won't launch:**
+```powershell
+# Check PyQt5 installation
+backend\.venv\Scripts\python.exe -c "import PyQt5; print('OK')"
+
+# If error, reinstall
+backend\.venv\Scripts\pip.exe install PyQt5 --force-reinstall
+
+# Check backend URL in config.ini or config.py
+```
+
+**CSV upload fails:**
+```
+Common causes:
+1. Column names incorrect (must have: Equipment Name, Type, Flowrate, Pressure, Temperature)
+2. File too large (max 10MB)
+3. Missing required columns
+4. Invalid numeric data in Flowrate/Pressure/Temperature columns
+
+Solution: Use sample_equipment_data.csv as template
+```
+
+**PDF download fails:**
+```bash
+# Check ReportLab installation
+pip show reportlab
+
+# Reinstall if needed
+pip install reportlab --upgrade
+```
+
+### Getting Help
+
+1. Check this README thoroughly
+2. Review DEMO_INSTRUCTIONS.md
+3. Run validation script: `.\scripts\validate_project.ps1`
+4. Check Django logs in terminal
+5. Check browser console for frontend errors
+
+---
 
 ### Performance Optimization
 

@@ -1,0 +1,113 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  backend-tests:
+    name: Backend Tests & Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install backend dependencies
+      run: |
+        cd backend
+        pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Run Django system checks
+      run: |
+        cd backend
+        python manage.py check --deploy
+    
+    - name: Run Django tests
+      run: |
+        cd backend
+        python manage.py test
+    
+    - name: Check for migrations
+      run: |
+        cd backend
+        python manage.py makemigrations --check --dry-run
+
+  frontend-build:
+    name: Frontend Build & Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Setup Node.js 18
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: frontend-react/package-lock.json
+    
+    - name: Install frontend dependencies
+      run: |
+        cd frontend-react
+        npm ci
+    
+    - name: Build frontend
+      run: |
+        cd frontend-react
+        npm run build
+    
+    - name: Check for build artifacts
+      run: |
+        cd frontend-react
+        if [ ! -d "dist" ]; then
+          echo "Build failed - dist folder not created"
+          exit 1
+        fi
+        echo "✅ Frontend build successful"
+
+  code-quality:
+    name: Code Quality Checks
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Check for sensitive files
+      run: |
+        if [ -f "backend/.env" ]; then
+          echo "❌ ERROR: .env file found in repository"
+          exit 1
+        fi
+        if [ -f "backend/db.sqlite3" ]; then
+          echo "⚠️  WARNING: Database file in repository"
+        fi
+        echo "✅ No sensitive files detected"
+    
+    - name: Verify required files exist
+      run: |
+        files=(
+          "README.md"
+          "backend/.env.example"
+          "frontend-react/.env.example"
+          "desktop-pyqt/config.example.py"
+          "sample_equipment_data.csv"
+        )
+        
+        for file in "${files[@]}"; do
+          if [ ! -f "$file" ]; then
+            echo "❌ Missing required file: $file"
+            exit 1
+          fi
+        done
+        echo "✅ All required files present"

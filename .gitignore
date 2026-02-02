@@ -49,3 +49,18 @@ htmlcov/
 # Temporary files
 *.tmp
 *.bak
+
+# Virtual environments (all variants)
+.venv/
+.venv
+
+# Cleanup backups
+cleanup_backup/
+
+# PyQt compiled files
+desktop-pyqt/__pycache__/
+desktop-pyqt/*.spec
+
+# Desktop app config (contains sensitive URLs/tokens)
+desktop-pyqt/config.py
+desktop-pyqt/config.ini

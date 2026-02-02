@@ -9,10 +9,7 @@
  */
 
 import axios from 'axios';
-
-// Base URL for the API
-// Automatically uses Railway backend in production, localhost in development
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+import { API_BASE_URL } from '../config.js';
 
 // Create axios instance with default config
 const api = axios.create({

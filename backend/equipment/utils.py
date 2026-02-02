@@ -33,12 +33,44 @@ def process_csv_file(file_path: str) -> Tuple[bool, Dict, str]:
         # Read CSV file using Pandas
         df = pd.read_csv(file_path)
         
-        # Check for required columns
-        required_columns = ['Equipment Name', 'Type', 'Flowrate', 'Pressure', 'Temperature']
-        missing_columns = [col for col in required_columns if col not in df.columns]
+        # Normalize column names to be case-insensitive
+        # Strip whitespace and convert to lowercase for matching
+        df.columns = df.columns.str.strip()
+        
+        # Create mapping of lowercase column names to actual column names
+        column_mapping = {col.lower(): col for col in df.columns}
+        
+        # Define required columns (lowercase for comparison)
+        required_columns_lower = ['equipment name', 'type', 'flowrate', 'pressure', 'temperature']
+        
+        # Check for required columns (case-insensitive)
+        missing_columns = []
+        for req_col in required_columns_lower:
+            if req_col not in column_mapping:
+                missing_columns.append(req_col.replace('equipment name', 'Equipment Name').title())
         
         if missing_columns:
             return False, {}, f"Missing required columns: {', '.join(missing_columns)}"
+        
+        # Rename columns to standardized format
+        standard_names = {
+            'equipment name': 'Equipment Name',
+            'type': 'Type',
+            'flowrate': 'Flowrate',
+            'pressure': 'Pressure',
+            'temperature': 'Temperature'
+        }
+        
+        # Build rename mapping from actual columns to standard names
+        rename_mapping = {}
+        for lower_col, actual_col in column_mapping.items():
+            if lower_col in standard_names:
+                rename_mapping[actual_col] = standard_names[lower_col]
+        
+        df = df.rename(columns=rename_mapping)
+        
+        # Now work with standardized column names
+        required_columns = ['Equipment Name', 'Type', 'Flowrate', 'Pressure', 'Temperature']
         
         # Remove rows with any missing values
         df_clean = df.dropna(subset=required_columns)
