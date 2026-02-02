@@ -11,7 +11,7 @@ Write-Host ""
 
 $ErrorCount = 0
 $WarningCount = 0
-$projectRoot = "c:\Users\91985\Desktop\FOSSE_2026"
+$projectRoot = $PSScriptRoot | Split-Path
 
 # Change to project root
 Set-Location $projectRoot

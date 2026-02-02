@@ -13,11 +13,11 @@ Write-Host "============================================================" -Foreg
 Write-Host "`n"
 
 # Project paths
-$projectRoot = "c:\Users\91985\Desktop\FOSSE_2026"
+$projectRoot = $PSScriptRoot
 $backendPath = Join-Path $projectRoot "backend"
 $frontendPath = Join-Path $projectRoot "frontend-react"
 $desktopPath = Join-Path $projectRoot "desktop-pyqt"
-$venvPython = Join-Path $projectRoot ".venv\Scripts\python.exe"
+$venvPython = Join-Path $backendPath ".venv\Scripts\python.exe"
 
 # ============================================================
 # STEP 1: Check Prerequisites

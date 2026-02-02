@@ -15,7 +15,7 @@ pause
 REM Create backend virtual environment
 echo.
 echo [1/2] Creating backend virtual environment...
-cd /d c:\Users\91985\Desktop\FOSSE_2026\backend
+cd /d "%~dp0backend"
 python -m venv .venv
 if %ERRORLEVEL% NEQ 0 (
     echo ERROR: Failed to create virtual environment

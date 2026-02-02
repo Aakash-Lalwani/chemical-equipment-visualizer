@@ -2,10 +2,10 @@
 
 A comprehensive full-stack application for analyzing and visualizing chemical equipment parameters. Built with Django REST Framework backend, React frontend, and PyQt5 desktop application.
 
-[![React](https://img.shields.io/badge/React-18-blue.svg)](https://reactjs.org/)
-[![Django](https://img.shields.io/badge/Django-5.2-green.svg)](https://www.djangoproject.com/)
-[![PyQt5](https://img.shields.io/badge/PyQt5-Desktop-orange.svg)](https://www.riverbankcomputing.com/software/pyqt/)
-[![WCAG 2.1 AA](https://img.shields.io/badge/Accessibility-WCAG%202.1%20AA-brightgreen.svg)](https://www.w3.org/WAI/WCAG21/quickref/)
+![React](https://img.shields.io/badge/React-18-blue.svg)
+![Django](https://img.shields.io/badge/Django-5.2-green.svg)
+![PyQt5](https://img.shields.io/badge/PyQt5-Desktop-orange.svg)
+![WCAG 2.1 AA](https://img.shields.io/badge/Accessibility-WCAG%202.1%20AA-brightgreen.svg)
 
 ## Overview
 
@@ -91,38 +91,37 @@ This project provides a complete solution for managing and analyzing chemical eq
 
 ---
 
-## 🚀 Quick Start (5 Minutes)
+## Quick Start
 
-**For impatient developers:** Use this one-command launcher (Windows):
+Use this one-command launcher (Windows):
 
-```powershell
-cd c:\Users\91985\Desktop\FOSSE_2026
+```bash
 .\RUN_ALL.bat
 ```
 
 This script automatically starts:
-- Django backend on `http://127.0.0.1:8000`
-- React frontend on `http://localhost:3000` (if Node.js installed)
+- Django backend server
+- React frontend (if Node.js installed)
 - PyQt5 desktop application
 
 **Default credentials:** `admin` / `admin123`
 
 ---
 
-## 📋 Detailed Setup Instructions
+## Setup Instructions
 
 ### Backend Setup
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/Aakash-Lalwani/chemical-equipment-visualizer.git
+git clone <repository-url>
 cd chemical-equipment-visualizer
 ```
 
 2. Create and activate virtual environment:
-```powershell
+```bash
 # Windows
-cd c:\Users\91985\Desktop\FOSSE_2026\backend
+cd backend
 python -m venv .venv
 .venv\Scripts\activate
 
@@ -166,9 +165,9 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-The backend API will be available at `http://127.0.0.1:8000/`
+The backend API will be available on the development server.
 
-**Test it:** Navigate to `http://127.0.0.1:8000/admin` and login with your credentials.
+**Test it:** Navigate to the admin panel and login with your credentials.
 
 ### Web Frontend Setup (Optional)
 
@@ -196,9 +195,9 @@ npm install
 npm run dev
 ```
 
-The web interface will be available at `http://localhost:3000/` (or `http://localhost:5173/` depending on Vite version)
+The web interface will be available on the Vite development server.
 
-**Test it:** Open the URL in your browser and you should see the login page.
+**Test it:** Open the application in your browser and you should see the login page.
 
 ### Desktop Application Setup
 
@@ -213,9 +212,8 @@ copy config.example.py config.py
 ```
 
 3. Run the application:
-```powershell
+```bash
 # Windows (from project root)
-cd c:\Users\91985\Desktop\FOSSE_2026
 backend\.venv\Scripts\python.exe desktop-pyqt\main.py
 
 # Linux/Mac
@@ -226,65 +224,59 @@ python desktop-pyqt/main.py
 
 ---
 
-## 🎬 Demo Checklist (2-3 Minute Video)
+## Demo Checklist
 
 Follow this exact sequence for your demo video:
 
-### **Pre-Recording Setup** (5 minutes before recording)
-- [ ] Run validation script: `.\scripts\validate_project.ps1`
-- [ ] Start all services: `.\RUN_ALL.bat` (or manually)
-- [ ] Verify backend: http://127.0.0.1:8000/admin
-- [ ] Verify frontend: http://localhost:3000
-- [ ] Have `sample_equipment_data.csv` ready
-- [ ] Close unnecessary applications
-- [ ] Clear browser cookies for clean login
+### Pre-Recording Setup
+- Run validation script: `.\scripts\validate_project.ps1`
+- Start all services: `.\RUN_ALL.bat`
+- Verify backend admin panel is accessible
+- Verify frontend login page loads correctly
+- Prepare `sample_equipment_data.csv` file
+- Close unnecessary applications
+- Clear browser cookies for clean session
 
-### **Demo Timeline** (Total: 2:30-3:00 minutes)
+### Demo Timeline
 
-#### [0:00-0:20] **Introduction** (20 sec)
-- [ ] Show VS Code with project structure
-- [ ] Mention tech stack: "Django + React + PyQt5"
-- [ ] State purpose: "Full-stack equipment data analyzer"
+#### Introduction (0:00-0:20)
+- Show VS Code with project structure
+- Mention tech stack: Django + React + PyQt5
+- State purpose: Full-stack equipment data analyzer
 
-#### [0:20-1:30] **Web Application** (70 sec)
-- [ ] Open http://localhost:3000
-- [ ] Login: `admin` / `admin123`
-- [ ] Navigate to Upload tab
-- [ ] Drag-drop `sample_equipment_data.csv`
-- [ ] Show success message
-- [ ] Navigate to Dashboard tab
-- [ ] Point out metrics:
-  - **Total Equipment: 10**
-  - **Avg Flowrate: ~195.23**
-  - **Avg Pressure: ~2.46**
-  - **Avg Temperature: ~83.33**
-- [ ] Show bar chart (equipment type distribution)
-- [ ] Show pie chart
+#### Web Application (0:20-1:30)
+- Open the web application
+- Login with credentials: `admin` / `admin123`
+- Navigate to Upload tab
+- Upload `sample_equipment_data.csv`
+- Navigate to Dashboard tab
+- Display metrics: Total Equipment (10), Avg Flowrate (195.23), Avg Pressure (2.46), Avg Temperature (83.33)
+- Show bar chart and pie chart visualizations
 
-#### [1:30-2:00] **History & PDF** (30 sec)
-- [ ] Navigate to History tab
-- [ ] Show list of uploads (should have 1-5)
-- [ ] Click "Download PDF" button
-- [ ] Open PDF showing summary + charts
+#### History & PDF (1:30-2:00)
+- Navigate to History tab
+- Display list of uploads
+- Download PDF report
+- Open PDF showing summary and charts
 
-#### [2:00-2:40] **Desktop Application** (40 sec)
-- [ ] Launch PyQt5 desktop app
-- [ ] Login with same credentials
-- [ ] Show History tab
-- [ ] View dataset details
-- [ ] Show Matplotlib charts
+#### Desktop Application (2:00-2:40)
+- Launch PyQt5 desktop app
+- Login with credentials
+- Show History tab
+- View dataset details
+- Display Matplotlib charts
 
-#### [2:40-3:00] **Wrap-up** (20 sec)
-- [ ] Back to VS Code
-- [ ] Mention: "Token auth, CSV validation, PDF reports"
-- [ ] State: "WCAG 2.1 AA accessible"
-- [ ] End: "Ready for deployment"
+#### Wrap-up (2:40-3:00)
+- Return to VS Code
+- Highlight features: Token authentication, CSV validation, PDF reports
+- Mention WCAG 2.1 AA accessibility compliance
+- State deployment readiness
 
-### **After Recording**
-- [ ] Trim video to 2:30-3:00 minutes
-- [ ] Add title card (optional)
-- [ ] Check audio clarity
-- [ ] Export as 1080p MP4
+### Post-Recording
+- Trim video to 2:30-3:00 minutes
+- Add title card (optional)
+- Verify audio clarity
+- Export as 1080p MP4
 
 **For detailed demo instructions, see:** [DEMO_INSTRUCTIONS.md](DEMO_INSTRUCTIONS.md)
 
@@ -295,7 +287,7 @@ Follow this exact sequence for your demo video:
 ### Getting Started
 
 1. Start the backend server (see Installation section)
-2. Access the web interface at `http://localhost:3000/` or launch the desktop application
+2. Access the web interface or launch the desktop application
 3. Log in with your credentials (default: `admin` / `admin123`)
 4. Upload a CSV file containing equipment data
 5. View automatically generated visualizations and statistics
@@ -357,7 +349,7 @@ Sample data files are provided in the `sample_equipment_data.csv` file.
 
 ## API Documentation
 
-Base URL: `http://127.0.0.1:8000/api/`
+Base URL: `/api/`
 
 ### Authentication Endpoints
 
@@ -559,7 +551,7 @@ npm test
 **Desktop application issues**
 - Ensure backend is running before starting desktop app
 - Verify PyQt5 is properly installed
-- Check network connectivity to localhost:8000
+- Check network connectivity to backend server
 
 **CSV upload failures**
 - Verify CSV format matches required structure
@@ -574,9 +566,9 @@ npm test
 
 ---
 
-## 🧪 Testing & Validation
+## Testing & Validation
 
-### Run Automated Validation
+### Automated Validation
 
 ```powershell
 # Windows
@@ -605,68 +597,67 @@ python manage.py test
 # OK
 ```
 
-### Manual Testing Checklist
+### Manual Testing
 
-- [ ] Backend admin panel loads: http://127.0.0.1:8000/admin
-- [ ] Frontend loads: http://localhost:3000
-- [ ] Can login with admin/admin123
-- [ ] Can upload sample_equipment_data.csv
-- [ ] Dashboard shows correct statistics (Total: 10, Avg Flowrate: ~195.23)
-- [ ] Bar chart displays 7 equipment types
-- [ ] History shows uploaded dataset
-- [ ] PDF downloads successfully
-- [ ] Desktop app launches and shows same data
+**Functional Tests:**
+- Backend admin panel loads successfully
+- Frontend application loads successfully
+- User authentication with default credentials (admin/admin123)
+- CSV file upload functionality (sample_equipment_data.csv)
+- Dashboard displays correct statistics (Total: 10, Avg Flowrate: ~195.23)
+- Bar chart displays 7 equipment types
+- History tab shows uploaded datasets
+- PDF report generation and download
+- Desktop application launches and displays data
 
 ---
 
-## 🚀 Deployment
+## Deployment
 
-### Backend Deployment (Railway/Heroku)
+### Backend Deployment
 
 1. **Configure environment variables:**
 ```env
 SECRET_KEY=<generate-new-secret-key>
 DEBUG=False
-ALLOWED_HOSTS=your-domain.railway.app
-CORS_ALLOWED_ORIGINS=https://your-frontend.vercel.app
+ALLOWED_HOSTS=your-production-domain
+CORS_ALLOWED_ORIGINS=your-frontend-domain
 ```
 
-2. **Railway deployment:**
+2. **Deploy with required files:**
 ```bash
-# Railway auto-detects Python and uses Procfile
 # Ensure these files exist:
 # - Procfile
 # - runtime.txt (Python version)
-# - railway.json (optional config)
+# - Configuration file (optional)
 ```
 
 3. **Run migrations after deployment:**
 ```bash
-railway run python manage.py migrate
-railway run python manage.py createsuperuser
+python manage.py migrate
+python manage.py createsuperuser
 ```
 
-### Frontend Deployment (Vercel/Netlify)
+### Frontend Deployment
 
 1. **Update environment variable:**
 ```env
-VITE_API_URL=https://your-backend.railway.app/api
+VITE_API_URL=your-backend-api-url
 ```
 
-2. **Vercel deployment:**
+2. **Build and deploy:**
 ```bash
 npm run build
-vercel --prod
 ```
 
-3. **Add build settings in Vercel dashboard:**
+3. **Build settings:**
 - Build Command: `npm run build`
 - Output Directory: `dist`
 - Install Command: `npm install`
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 FOSSE_2026/
@@ -700,7 +691,7 @@ FOSSE_2026/
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -738,10 +729,9 @@ python manage.py createsuperuser
 
 **CORS errors in browser console:**
 ```python
-# backend/config/settings.py should have:
+# backend/config/settings.py should include:
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://localhost:5173',
+    # Add your frontend development server URLs
 ]
 # Restart backend after changes
 ```
