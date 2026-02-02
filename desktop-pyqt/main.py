@@ -12,6 +12,17 @@ UX IMPROVEMENTS:
 ✅ Better spacing and layout
 ✅ Professional colors and fonts
 ✅ Improved charts with styling
+
+NEW: UI Module with design tokens and modern login widget
+    To use the improved login window (no gradient artifacts):
+    
+    from ui.login_widget import ModernLoginWidget
+    
+    # Replace LoginWindow with:
+    login = ModernLoginWidget(api_url=API_URL)
+    login.loginSuccess.connect(self.show_main_window)
+    
+    See desktop-pyqt/ui/README.md for full documentation
 """
 
 import sys

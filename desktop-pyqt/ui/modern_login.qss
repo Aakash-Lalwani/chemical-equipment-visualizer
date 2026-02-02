@@ -1,0 +1,141 @@
+/* Modern Login Window Stylesheet */
+
+/* Main Window - Clean solid background instead of gradient */
+ModernLoginWidget {
+    background-color: #f9fafb;
+}
+
+/* Login Card - Elevated white card with shadow effect */
+QFrame#loginCard {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+/* App Logo/Icon */
+QLabel#appLogo {
+    font-size: 64px;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Title Heading */
+QLabel#loginTitle {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Subtitle */
+QLabel#loginSubtitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: #6b7280;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Input Labels */
+QLabel#inputLabel {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 6px;
+}
+
+/* Text Inputs */
+QLineEdit {
+    background-color: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 15px;
+    color: #1f2937;
+    selection-background-color: #3b82f6;
+    selection-color: #ffffff;
+}
+
+QLineEdit:focus {
+    border: 2px solid #2563eb;
+    outline: none;
+}
+
+QLineEdit:hover {
+    border-color: #d1d5db;
+}
+
+/* Primary Button */
+QPushButton#primaryButton {
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    min-height: 44px;
+}
+
+QPushButton#primaryButton:hover {
+    background-color: #1e40af;
+}
+
+QPushButton#primaryButton:pressed {
+    background-color: #1e3a8a;
+}
+
+QPushButton#primaryButton:disabled {
+    background-color: #e5e7eb;
+    color: #9ca3af;
+}
+
+/* Demo Info Box */
+QFrame#demoBox {
+    background-color: #fef3c7;
+    border: 1px solid #fbbf24;
+    border-radius: 8px;
+}
+
+QLabel#demoTitle {
+    font-size: 13px;
+    font-weight: 600;
+    color: #92400e;
+    background-color: transparent;
+}
+
+QLabel#demoText {
+    font-size: 12px;
+    font-weight: 400;
+    color: #78350f;
+    background-color: transparent;
+}
+
+/* Status Messages */
+QLabel#errorLabel {
+    color: #ef4444;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px;
+    background-color: #fee2e2;
+    border-radius: 6px;
+}
+
+QLabel#successLabel {
+    color: #10b981;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px;
+    background-color: #d1fae5;
+    border-radius: 6px;
+}
+
+QLabel#infoLabel {
+    color: #3b82f6;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px;
+    background-color: #dbeafe;
+    border-radius: 6px;
+}

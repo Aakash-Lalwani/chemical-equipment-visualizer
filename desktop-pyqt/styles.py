@@ -7,11 +7,11 @@ WHY: Match the professional web UI look
 HOW: CSS-like styling for Qt widgets
 """
 
-# Color Palette (matching web design)
+# Color Palette (matching web design - UPDATED to exact web values)
 COLORS = {
-    'primary': '#3b82f6',      # Blue
-    'primary_dark': '#2563eb',
-    'primary_light': '#60a5fa',
+    'primary': '#2563eb',      # Blue (FIXED: now matches web exactly)
+    'primary_dark': '#1e40af',
+    'primary_light': '#3b82f6',
     'success': '#10b981',      # Green
     'danger': '#ef4444',       # Red
     'warning': '#f59e0b',      # Amber

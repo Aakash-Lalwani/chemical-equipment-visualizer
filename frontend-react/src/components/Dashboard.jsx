@@ -8,6 +8,10 @@
  * ✅ Loading states while fetching
  * ✅ Empty state with clear call-to-action
  * ✅ Better color scheme consistency
+ * 
+ * DESIGN TOKENS:
+ * Colors now imported from ../styles/tokens.js for consistency
+ * with desktop app (desktop-pyqt/ui/style_tokens.py)
  */
 
 import { useEffect, useState } from 'react';
@@ -16,6 +20,7 @@ import { Bar, Pie } from 'react-chartjs-2';
 import { getUploadHistory } from '../services/api';
 import Tooltip from './Tooltip';
 import { setupKeyboardShortcuts } from '../utils/keyboardShortcuts';
+import { colors } from '../styles/tokens';  // NEW: Import design tokens
 
 // Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Title, Tooltip, Legend);
