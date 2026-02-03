@@ -471,7 +471,7 @@ This project demonstrates expertise in:
 
 <div align="center">
 
-**Built for FOSSE 2026**
+**Built for FOSSEE 2026**
 
 [Back to Top](#chemical-equipment-parameter-visualizer)
 
