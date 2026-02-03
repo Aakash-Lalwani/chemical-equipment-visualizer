@@ -18,46 +18,46 @@
 
 ---
 
-## 📋 Overview
+## Overview
 
 This project enables engineers and researchers to **analyze chemical equipment data efficiently** by uploading CSV files and automatically generating:
 
-- ✅ **Statistical summaries** (averages, distributions, counts)
-- ✅ **Interactive charts** (bar charts, pie charts, tables)
-- ✅ **Equipment distribution insights** by type
-- ✅ **Downloadable PDF reports** with embedded visualizations
+- **Statistical summaries** (averages, distributions, counts)
+- **Interactive charts** (bar charts, pie charts, tables)
+- **Equipment distribution insights** by type
+- **Downloadable PDF reports** with embedded visualizations
 
 **Designed to be:** Easy to deploy • Easy to use • Easy to evaluate
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
-### 📊 Data Management
+### Data Management
 - **CSV upload** with validation and automatic parsing
 - **Automatic data cleaning** and integrity checks
 - **SQLite-backed storage** with dataset history
 - **Upload history** tracking with delete functionality
 - **Max 5 datasets** per user (auto-cleanup)
 
-### 🔬 Data Analysis
+### Data Analysis
 - **Automatic calculations:** Averages, totals, distributions
 - **Equipment categorization** by type (Reactor, Pump, Heat Exchanger, etc.)
 - **Parameter analysis:** Flowrate, Pressure, Temperature
 - **Data validation** with detailed error reporting
 
-### 📈 Visualization & Reporting
+### Visualization & Reporting
 - **Interactive charts:** Chart.js (web), Matplotlib (desktop)
 - **Chart types:** Bar charts, Pie charts, Data tables
 - **Summary statistics cards** with key metrics
 - **PDF report generation** with ReportLab (embedded charts)
 
-### 💻 Multi-Platform Support
+### Multi-Platform Support
 - **Web Application:** React 18 + Vite (responsive, accessible)
 - **Desktop Application:** PyQt5 (native GUI, cross-platform)
 - **Shared Backend:** Django REST API with token authentication
 
-### 🔒 Security & Architecture
+### Security & Architecture
 - **Token-based authentication** (Django REST Framework)
 - **RESTful API design** with proper HTTP methods
 - **CORS-enabled** for cross-origin requests
@@ -66,7 +66,7 @@ This project enables engineers and researchers to **analyze chemical equipment d
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 ### Three-Tier Architecture
 
@@ -100,11 +100,11 @@ This project enables engineers and researchers to **analyze chemical equipment d
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 chemical-equipment-visualizer/
-├── 📂 backend/                    # Django REST API
+├── backend/                      # Django REST API
 │   ├── config/                   # Project settings & URLs
 │   ├── equipment/                # Models, views, serializers
 │   │   ├── models.py            # Dataset & Equipment models
@@ -116,7 +116,7 @@ chemical-equipment-visualizer/
 │   ├── manage.py
 │   └── requirements.txt
 │
-├── 📂 frontend-react/            # React web application
+├── frontend-react/               # React web application
 │   ├── src/
 │   │   ├── components/          # React components
 │   │   │   ├── Login.jsx
@@ -128,22 +128,22 @@ chemical-equipment-visualizer/
 │   ├── package.json
 │   └── vite.config.js
 │
-├── 📂 desktop-pyqt/              # PyQt5 desktop app
+├── desktop-pyqt/                 # PyQt5 desktop app
 │   ├── ui/                      # Modern UI components
 │   │   ├── login_widget.py     # Fixed login window
 │   │   └── modern_login.qss    # Stylesheet
 │   ├── main.py                  # Application entry point
 │   └── requirements.txt
 │
-├── 📄 sample_equipment_data.csv  # Sample dataset
-├── 🚀 RUN_ALL.bat                # Windows quick launcher
-├── 🎬 DEMO_SETUP.bat             # Demo preparation script
-└── 📖 README.md
+├── sample_equipment_data.csv     # Sample dataset
+├── RUN_ALL.bat                   # Windows quick launcher
+├── DEMO_SETUP.bat                # Demo preparation script
+└── README.md
 ```
 
 ---
 
-## 📊 CSV File Format
+## CSV File Format
 
 ### Required Columns (case-insensitive)
 
@@ -175,16 +175,16 @@ Separator E,Separator,220.5,2.8,75.0
 
 ---
 
-## ⚡ Quick Start (Windows – One Command)
+## Quick Start (Windows – One Command)
 
 ```bash
 .\RUN_ALL.bat
 ```
 
 **This starts:**
-- ✅ Django backend → `http://127.0.0.1:8000`
-- ✅ React frontend → `http://localhost:5173`
-- ✅ PyQt5 desktop app → Opens in new window
+- Django backend → `http://127.0.0.1:8000`
+- React frontend → `http://localhost:5173`
+- PyQt5 desktop app → Opens in new window
 
 **Default credentials:**
 ```
@@ -193,7 +193,7 @@ Password: admin123```
 
 ---
 
-## 🛠️ Installation & Deployment (Detailed)
+## Installation & Deployment (Detailed)
 
 ### Prerequisites
 
@@ -204,7 +204,7 @@ Password: admin123```
 
 ---
 
-### 1️⃣ Backend (Django REST API)
+### Backend (Django REST API)
 
 #### Clone Repository
 ```bash
@@ -260,7 +260,7 @@ python manage.py runserver
 
 ---
 
-### 2️⃣ Web Frontend (React)
+### Web Frontend (React)
 
 ```bash
 cd ../frontend-react
@@ -293,7 +293,7 @@ npm run dev
 
 ---
 
-### 3️⃣ Desktop Application (PyQt5)
+### Desktop Application (PyQt5)
 
 **Ensure backend is running first!**
 
@@ -321,7 +321,7 @@ python main.py
 
 ---
 
-## 🔌 API Endpoints
+## API Endpoints
 
 ### Authentication
 | Method | Endpoint | Description |
@@ -363,7 +363,7 @@ Authorization: Token <your-token-here>
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Backend Tests
 ```bash
@@ -379,19 +379,19 @@ npm test
 
 ### Manual Validation Checklist
 
-✅ **Login** with `admin` / `admin123`  
-✅ **Upload** `sample_equipment_data.csv`  
-✅ **Verify** charts and statistics display correctly  
-✅ **Download** PDF report  
-✅ **View** upload history  
-✅ **Delete** a dataset  
-✅ **Launch** desktop application and repeat tests  
+- **Login** with `admin` / `admin123`  
+- **Upload** `sample_equipment_data.csv`  
+- **Verify** charts and statistics display correctly  
+- **Download** PDF report  
+- **View** upload history  
+- **Delete** a dataset  
+- **Launch** desktop application and repeat tests  
 
 ---
 
-## 🔒 Security Notes
+## Security Notes
 
-⚠️ **This project is configured for development and evaluation purposes.**
+**This project is configured for development and evaluation purposes.**
 
 ### For Production Deployment:
 
@@ -407,21 +407,21 @@ npm test
 
 ---
 
-## 🚀 Future Enhancements
+## Future Enhancements
 
-- 🔍 **Advanced filtering** and search capabilities
-- 👥 **Role-based access control** (RBAC)
-- 🐳 **Docker containerization** for easy deployment
-- 📊 **Real-time updates** with WebSockets
-- 📤 **Export to Excel/JSON** formats
-- 📧 **Email notifications** for report generation
-- 🌐 **Multi-language support** (i18n)
-- 📱 **Mobile-responsive** PWA version
-- 🤖 **ML-based** anomaly detection in equipment data
+- **Advanced filtering** and search capabilities
+- **Role-based access control** (RBAC)
+- **Docker containerization** for easy deployment
+- **Real-time updates** with WebSockets
+- **Export to Excel/JSON** formats
+- **Email notifications** for report generation
+- **Multi-language support** (i18n)
+- **Mobile-responsive** PWA version
+- **ML-based** anomaly detection in equipment data
 
 ---
 
-## 📄 License
+## License
 
 **MIT License**
 
@@ -447,33 +447,33 @@ SOFTWARE.
 
 ---
 
-## 🎯 Final Note for Evaluators
+## Final Note for Evaluators
 
 This project demonstrates expertise in:
 
-✅ **Full-stack development** with modern frameworks (React, Django)  
-✅ **Data processing** with Pandas and statistical analysis  
-✅ **RESTful API design** with proper authentication  
-✅ **Cross-platform application** development (Web + Desktop)  
-✅ **Clean deployment workflow** with one-command setup  
-✅ **Professional documentation** and code organization  
-✅ **Accessibility standards** (WCAG 2.1 AA compliance)  
-✅ **Security best practices** for web applications  
+- **Full-stack development** with modern frameworks (React, Django)  
+- **Data processing** with Pandas and statistical analysis  
+- **RESTful API design** with proper authentication  
+- **Cross-platform application** development (Web + Desktop)  
+- **Clean deployment workflow** with one-command setup  
+- **Professional documentation** and code organization  
+- **Accessibility standards** (WCAG 2.1 AA compliance)  
+- **Security best practices** for web applications  
 
 **Evaluation-Friendly Features:**
-- ⚡ One-command launch with `RUN_ALL.bat`
-- 📊 Sample data included for immediate testing
-- 📝 Comprehensive documentation
-- 🎬 Demo setup script for video recording
-- ✅ Clear validation and testing procedures
+- One-command launch with `RUN_ALL.bat`
+- Sample data included for immediate testing
+- Comprehensive documentation
+- Demo setup script for video recording
+- Clear validation and testing procedures
 
 ---
 
 <div align="center">
 
-**Built with ❤️ for FOSSE 2026**
+**Built for FOSSE 2026**
 
-[⬆ Back to Top](#chemical-equipment-parameter-visualizer)
+[Back to Top](#chemical-equipment-parameter-visualizer)
 
 </div>**Desktop app won't launch:**
 ```powershell
