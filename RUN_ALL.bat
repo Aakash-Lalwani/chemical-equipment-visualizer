@@ -36,7 +36,7 @@ echo  ALL COMPONENTS STARTED!
 echo ============================================================
 echo.
 echo  BACKEND:  http://127.0.0.1:8000
-echo  FRONTEND: http://localhost:3000  (if Node.js installed)
+echo  FRONTEND: http://localhost:5173  (if Node.js installed)
 echo  DESKTOP:  Window opened
 echo.
 echo  Credentials: admin / admin123
@@ -49,7 +49,7 @@ timeout /t 5 /nobreak >nul
 REM Try to open browser
 where node >nul 2>&1
 if %ERRORLEVEL% EQU 0 (
-    start http://localhost:3000
+    start http://localhost:5173
 ) else (
     start http://127.0.0.1:8000/admin
 )

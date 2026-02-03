@@ -50,6 +50,14 @@ except ImportError:
     LOGIN_STYLESHEET = ""
     COLORS = {}
 
+# Import modern login widget
+try:
+    from ui.login_widget import ModernLoginWidget
+    USE_MODERN_LOGIN = True
+except ImportError:
+    USE_MODERN_LOGIN = False
+    print("Warning: Modern login widget not found, using fallback")
+
 # API Configuration
 # Load from config.ini if it exists, otherwise use localhost
 def load_config():
@@ -813,15 +821,37 @@ def main():
     # Create API client
     api_client = APIClient()
     
-    # Show login window
-    login_window = LoginWindow(api_client)
+    # Use modern login widget if available
+    if USE_MODERN_LOGIN:
+        # Modern login widget
+        login_window = ModernLoginWidget(api_url=API_BASE_URL.replace('/api', ''))
+        
+        def on_modern_login_success(token):
+            """Handle successful login from modern widget"""
+            api_client.set_token(token)
+            # Fetch user data
+            try:
+                response = api_client.session.get(f'{API_BASE_URL}/user/')
+                user_data = response.json()
+            except:
+                user_data = {'username': 'user'}
+            
+            main_window = MainWindow(api_client, user_data)
+            main_window.show()
+            login_window.close()
+        
+        login_window.loginSuccess.connect(on_modern_login_success)
+    else:
+        # Fallback to old login window
+        login_window = LoginWindow(api_client)
+        
+        def on_login_success(user_data):
+            """Handle successful login"""
+            main_window = MainWindow(api_client, user_data)
+            main_window.show()
+        
+        login_window.login_successful.connect(on_login_success)
     
-    def on_login_success(user_data):
-        """Handle successful login"""
-        main_window = MainWindow(api_client, user_data)
-        main_window.show()
-    
-    login_window.login_successful.connect(on_login_success)
     login_window.show()
     
     sys.exit(app.exec_())
