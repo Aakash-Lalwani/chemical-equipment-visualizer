@@ -75,16 +75,16 @@ This project enables engineers and researchers to **analyze chemical equipment d
 │                   CLIENT TIER                           │
 ├──────────────────────┬──────────────────────────────────┤
 │  Web Frontend        │  Desktop Application             │
-│  (React 18 + Vite)   │  (PyQt5)                        │
-│  - Chart.js charts   │  - Matplotlib charts            │
-│  - Responsive UI     │  - Native GUI                   │
-│  - Port 5173         │  - API client                   │
+│  (React 18 + Vite)   │  (PyQt5)                         │
+│  - Chart.js charts   │  - Matplotlib charts             │
+│  - Responsive UI     │  - Native GUI                    │
+│  - Port 5173         │  - API client                    │
 └──────────────────────┴──────────────────────────────────┘
                          ▼
 ┌─────────────────────────────────────────────────────────┐
-│              APPLICATION TIER (API)                      │
-│         Django REST Framework (Port 8000)                │
-│  - Token Authentication                                  │
+│              APPLICATION TIER (API)                     │
+│         Django REST Framework (Port 8000)               │
+│  - Token Authentication                                 │
 │  - CSV Processing (Pandas)                              │
 │  - Statistical Calculations                             │
 │  - PDF Generation (ReportLab)                           │
@@ -181,10 +181,6 @@ Separator E,Separator,220.5,2.8,75.0
 .\RUN_ALL.bat
 ```
 
-**This starts:**
-- Django backend → `http://127.0.0.1:8000`
-- React frontend → `http://localhost:5173`
-- PyQt5 desktop app → Opens in new window
 
 **Default credentials:**
 ```
@@ -256,16 +252,6 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-**Backend runs at:** `http://127.0.0.1:8000/`
-
----
-
-### Web Frontend (React)
-
-```bash
-cd ../frontend-react
-```
-
 #### Install Dependencies
 ```bash
 npm install
@@ -288,8 +274,6 @@ VITE_API_URL=http://127.0.0.1:8000/api
 ```bash
 npm run dev
 ```
-
-**Frontend runs at:** `http://localhost:5173/`
 
 ---
 
@@ -474,95 +458,3 @@ This project demonstrates expertise in:
 **Built for FOSSEE 2026**
 
 [Back to Top](#chemical-equipment-parameter-visualizer)
-
-</div>**Desktop app won't launch:**
-```powershell
-# Check PyQt5 installation
-backend\.venv\Scripts\python.exe -c "import PyQt5; print('OK')"
-
-# If error, reinstall
-backend\.venv\Scripts\pip.exe install PyQt5 --force-reinstall
-
-# Check backend URL in config.ini or config.py
-```
-
-**CSV upload fails:**
-```
-Common causes:
-1. Column names incorrect (must have: Equipment Name, Type, Flowrate, Pressure, Temperature)
-2. File too large (max 10MB)
-3. Missing required columns
-4. Invalid numeric data in Flowrate/Pressure/Temperature columns
-
-Solution: Use sample_equipment_data.csv as template
-```
-
-**PDF download fails:**
-```bash
-# Check ReportLab installation
-pip show reportlab
-
-# Reinstall if needed
-pip install reportlab --upgrade
-```
-
-### Getting Help
-
-1. Check this README thoroughly
-2. Review DEMO_INSTRUCTIONS.md
-3. Run validation script: `.\scripts\validate_project.ps1`
-4. Check Django logs in terminal
-5. Check browser console for frontend errors
-
----
-
-### Performance Optimization
-
-- For large datasets, consider implementing pagination
-- Enable database query optimization
-- Use caching for frequently accessed data
-- Optimize image compression in PDF reports
-## Security Considerations
-
-**Important: This application is configured for development use.**
-
-For production deployment, implement the following security measures:
-
-1. Change Django SECRET_KEY in settings.py
-2. Set DEBUG = False in production
-3. Configure ALLOWED_HOSTS properly
-4. Use environment variables for sensitive data
-5. Implement HTTPS/SSL
-6. Add rate limiting to API endpoints
-7. Strengthen password requirements
-8. Enable CSRF protection
-9. Implement proper CORS configuration
-10. Regular security audits and dependency updates
-
-## Future Enhancements
-
-Potential improvements for future versions:
-
-- Advanced filtering and search capabilities
-- Export to multiple formats (Excel, JSON)
-- Real-time data updates with WebSockets
-- User profile management
-- Role-based access control
-- Email notifications for dataset processing
-- Additional chart types (line charts, scatter plots)
-- Mobile application development
-- Docker containerization
-- Automated testing suite
-- CI/CD pipeline integration
-
-## License
-
-This project is available under the MIT License.
-
-## Contact
-
-For questions or issues, please open an issue on the GitHub repository.
-
----
-
-Last Updated: January 2026
